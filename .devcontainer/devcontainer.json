@@ -4,19 +4,20 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "postCreateCommand": "docker run -d --name 3x-ui -p 2053:2053 --restart unless-stopped crasivo/3x-ui",
-  "forwardPorts": [2053],
+  "postCreateCommand": "docker run -d --name 3x-ui -p 2053:2053 -p 2087:2087 -p 443:443 --restart unless-stopped crasivo/3x-ui",
+  "forwardPorts": [2053, 2087, 443],
   "portsAttributes": {
     "2053": {
       "label": "3x-ui Panel",
       "onAutoForward": "notify"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-azuretools.vscode-docker"
-      ]
+    },
+    "2087": {
+      "label": "VLESS Inbound",
+      "onAutoForward": "notify"
+    },
+    "443": {
+      "label": "Trojan/VMess Inbound",
+      "onAutoForward": "notify"
     }
   }
 }

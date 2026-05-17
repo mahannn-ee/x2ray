@@ -2,7 +2,10 @@
   "name": "3x-ui Codespace",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
+    }
   },
   "postCreateCommand": "docker run -d --name 3x-ui -p 2053:2053 -p 2087:2087 -p 443:443 --restart unless-stopped crasivo/3x-ui",
   "forwardPorts": [2053, 2087, 443],
